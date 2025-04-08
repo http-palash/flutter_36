@@ -7,60 +7,51 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(title: 'Images'),
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.deepPurple),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Image.asset(
-        'assets/images/download.jpg',
-        fit: BoxFit.cover,
-        width: double.infinity,
-        height: double.infinity,
-      ),
-      // body: Image.asset('assets/images/.jpg', fit: BoxFit.cover),
-      // body: Image.asset('assets/images/.jpg', fit: BoxFit.cover),
-
-      // body: Image.network(
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      appBar: AppBar(title: Text('DigiGreen')),
+      // body: Center(child: Text('Hello Worlddd!')),
+      body: Center(
+        child: Container(
+          width: 200,
+          height: 400,
+          color: Colors.red,
+          child: Column(
+            children: [
+              Image.asset(
+                'assets/images/image1.jpg',
+                fit: BoxFit.cover,
+                height: 200,
+              ),
+              Image.asset(
+                'assets/images/image2.jpg',
+                fit: BoxFit.cover,
+                height: 200,
+              ),
+            ],
+          ),
+          // child: Image.asset('assets/images/image2.jpg', fit: BoxFit.cover),
+        ),
       ),
     );
   }

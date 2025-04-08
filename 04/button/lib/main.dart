@@ -7,7 +7,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,36 +28,64 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(title: Text(widget.title)),
+
       body: Center(
-        // child: ElevatedButton(
-        // child: TextButton(
-        child: OutlinedButton(
-          child: Text('Click here'),
-          onPressed: () {
-            print('Text Button Pressed');
-          },
-          onLongPress: () => print('Text Button Long Pressed'),
-          style: TextButton.styleFrom(
-            foregroundColor: Colors.white,
-            backgroundColor: Colors.blue,
-            padding: const EdgeInsets.all(16.0),
-            textStyle: const TextStyle(fontSize: 20),
+        child: Container(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Outlined Button with custom border color and size
+              OutlinedButton(
+                onPressed: () => debugPrint('Outlined Button Pressed'),
+                onLongPress: () => debugPrint('Outlined Button Long Pressed'),
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(color: Colors.blue, width: 2),
+                  padding: const EdgeInsets.all(16.0),
+                  textStyle: const TextStyle(fontSize: 20),
+                ),
+                child: const Text(
+                  'Outlined Button',
+                  style: TextStyle(color: Colors.blue),
+                ),
+              ),
+
+              const SizedBox(height: 16.0),
+
+              // Elevated Button with custom background color
+              ElevatedButton(
+                onPressed: () => debugPrint('Elevated Button Pressed'),
+                onLongPress: () => debugPrint('Elevated Button Long Pressed'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  padding: const EdgeInsets.all(16.0),
+                  textStyle: const TextStyle(fontSize: 20),
+                ),
+                child: const Text('Elevated Button'),
+              ),
+
+              const SizedBox(height: 16.0),
+
+              // Text Button with custom text style
+              TextButton(
+                onPressed: () => debugPrint('Text Button Pressed'),
+                onLongPress: () => debugPrint('Text Button Long Pressed'),
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.blue,
+                  padding: const EdgeInsets.all(16.0),
+                  textStyle: const TextStyle(fontSize: 20),
+                  side: const BorderSide(color: Colors.black, width: 2),
+                ),
+                child: const Text(
+                  'Text Button',
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+            ],
           ),
         ),
       ),
